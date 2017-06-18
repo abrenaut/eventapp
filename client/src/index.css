@@ -1,5 +1,44 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  padding-top: 15px;
+  background-color: #fcfcfc;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul.pageNumbers li {
+  display : inline;
+  padding : 0 0.5em;
+}
+
+ul.pageNumbers li a.active {
+  font-size: 20px;
+}
+
+ul#menu_horizontal {
+  list-style-type : none;
+}
+
+.close {
+  cursor: pointer;
+  transition: opacity 0.3s linear,
+    color 0.3s linear;
+}
+
+.close:hover {
+  color: #DD0000;
 }

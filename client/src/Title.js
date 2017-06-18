@@ -4,9 +4,7 @@ class Title extends React.Component {
   render() {
     return (
     <div>
-       <div>
-          <h1>{this.props.eventCount} Events</h1>
-       </div>
+      <h1>Total: {this.props.eventCount} Events</h1>
     </div>
     );
   }
