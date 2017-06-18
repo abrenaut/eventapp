@@ -1,0 +1,54 @@
+version: '2.1'
+
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data:/data/db
+    networks:
+      main:
+  client:
+    build: ./client
+    command: npm start
+    volumes:
+      - ./client:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_WS_URL=http://localhost:3002
+    networks:
+      main:
+  api:
+    build: ./api
+    command: npm start
+    volumes:
+      - ./api:/app
+    ports:
+      - "3001:3001"
+    environment:
+      - WS_URL=http://ws:3002
+    networks:
+      main:
+    healthcheck:
+        # Wait for the database
+        test: ["CMD", "curl", "-f", "http://db:27017"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  ws:
+    build: ./ws
+    command: npm start
+    volumes:
+      - ./ws:/app
+    ports:
+      - "3002:3002"
+    environment:
+      - API_URL=http://api:3001
+    networks:
+      main:
+volumes:
+  data:
+networks:
+  main:
