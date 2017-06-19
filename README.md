@@ -40,6 +40,7 @@ Launch a mongo instance:
 Run the API tests:
 
     cd api
+    npm install
     npm test
 
 # Directory Structure
