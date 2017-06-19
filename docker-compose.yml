@@ -12,8 +12,6 @@ services:
   client:
     build: ./client
     command: npm start
-    volumes:
-      - ./client:/app
     ports:
       - "3000:3000"
     environment:
@@ -22,8 +20,6 @@ services:
       main:
   api:
     build: ./api
-    volumes:
-      - ./api:/app
     ports:
       - "3001:3001"
     environment:
@@ -37,8 +33,6 @@ services:
   ws:
     build: ./ws
     command: npm start
-    volumes:
-      - ./ws:/app
     ports:
       - "3002:3002"
     environment:

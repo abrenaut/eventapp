@@ -2,7 +2,7 @@
 
     git clone https://github.com/abrenaut/eventapp
     cd eventapp
-    docker-compose up -d
+    docker-compose up --build
 
 # Usage of the REST API
 
