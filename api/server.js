@@ -11,15 +11,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // The connection to the database where events are stored
-mongoose.connect('mongodb://db/Eventdb'); 
-require('./src/models');
+mongoose.connect(process.env.DB_URL); 
+require('./src/models/event');
 
 // A WebSocket client used to notify the WebSocket server when an event is deleted / created
 const socket = io(process.env.WS_URL);
 app.set('socket', socket);
 
 // Initialize api routes
-const apiRoutes = require('./src/routes');
+const apiRoutes = require('./src/routes/event');
 apiRoutes(app);
 
 // Default route if no matching route found
@@ -29,3 +29,5 @@ app.use(function(req, res) {
 
 app.listen(port)
 console.log("API Server started on port " + port)
+
+module.exports = app; // for testing

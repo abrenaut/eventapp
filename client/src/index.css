@@ -1,6 +1,6 @@
 body {
   padding-top: 15px;
-  background-color: #fcfcfc;
+  font-family: Helvetica, Verdana, sans-serif;
 }
 
 table {
@@ -29,8 +29,8 @@ ul.pageNumbers li a.active {
   font-size: 20px;
 }
 
-ul#menu_horizontal {
-  list-style-type : none;
+.sortableHeader {
+  cursor: pointer;
 }
 
 .close {

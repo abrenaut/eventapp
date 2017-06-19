@@ -52,7 +52,7 @@ class EventList extends React.Component {
       }
       return (
           <th key={idx}>
-            <span id={column.name} onClick={this._handleSort.bind(this)}>
+            <span className="sortableHeader" id={column.name} onClick={this._handleSort.bind(this)}>
               {column.label}{sortDirArrow}
             </span>
             <div>
@@ -63,7 +63,6 @@ class EventList extends React.Component {
     });
 
     // Filter events
-    const filtersCount = filters.lenght;
     const filteredEvents = this.props.events.filter(function(a) {
       let match = true;
       Object.keys(filters).forEach(function (key) {
@@ -93,8 +92,9 @@ class EventList extends React.Component {
       return (<EventItem event={event} key={event._id} remove={this.props.remove}/>)
     });
 
+    const pageCount = Math.ceil(sortedEvents.length / eventsPerPage);
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(sortedEvents.length / eventsPerPage); i++) {
+    for (let i = 1; i <= pageCount; i++) {
       pageNumbers.push(i);
     }
 

@@ -1,4 +1,4 @@
-const controller = require('./controllers');
+const controller = require('../controllers/event');
 
 module.exports = function(app) {
   app.route('/events')

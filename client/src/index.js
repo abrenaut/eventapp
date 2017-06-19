@@ -28,7 +28,9 @@ class EventApp extends React.Component{
       this._addEvent(data);
     });
     socket.on('server:newEvents', data => {
-      this.setState({events: JSON.parse(data)});
+      if (data) {
+        this.setState({events: JSON.parse(data)}); 
+      }
     });
   }
 

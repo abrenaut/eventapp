@@ -29,6 +29,7 @@ services:
       - "3001:3001"
     environment:
       - WS_URL=http://ws:3002
+      - DB_URL=mongodb://db/events
     networks:
       main:
     healthcheck:
