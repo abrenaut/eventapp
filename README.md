@@ -31,6 +31,17 @@ The stack exposes the following ports:
 
     curl -H "Content-Type: application/json" -X DELETE http://localhost:3001/events/_eventID_
 
+## How can I run the unit tests?
+
+Launch a mongo instance:
+
+    docker run --name events_mongo -d -p 27017:27017 mongo
+
+Run the API tests:
+
+    cd api
+    npm test
+
 # Directory Structure
 
 ## `/api`
