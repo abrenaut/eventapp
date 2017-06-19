@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2'
 
 services:
   db:
@@ -22,7 +22,6 @@ services:
       main:
   api:
     build: ./api
-    command: npm start
     volumes:
       - ./api:/app
     ports:
@@ -32,12 +31,9 @@ services:
       - DB_URL=mongodb://db/events
     networks:
       main:
-    healthcheck:
-        # Wait for the database
-        test: ["CMD", "curl", "-f", "http://db:27017"]
-        interval: 30s
-        timeout: 10s
-        retries: 5
+    depends_on:
+      - "db"
+    command: ["./wait-for-it.sh", "db:27017", "--", "npm", "start"]
   ws:
     build: ./ws
     command: npm start

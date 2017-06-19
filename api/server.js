@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.DB_URL); 
 require('./src/models/event');
 
-// A WebSocket client used to notify the WebSocket server when an event is deleted / created
+// The WebSocket client used to notify the WebSocket server when an event is deleted / created
 const socket = io(process.env.WS_URL);
 app.set('socket', socket);
 
